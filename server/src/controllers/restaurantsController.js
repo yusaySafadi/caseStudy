@@ -5,7 +5,7 @@ async function getAllRestaurants(req, res) {
         const data = await restaurantModel.getAllRestaurants();
         res.status(200).json(data);
     } catch (err) {
-        res.status(500).send('Failed to retrieve restaurants');
+        res.status(500).send('Failed to retrieve restaurants ' + err);
     }
 }
 
