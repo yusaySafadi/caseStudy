@@ -1,6 +1,6 @@
 const restaurantModel = require("../models/restaurantModel");
 const locationService = require("../services/locationService");
-const {geocodeAddress} = require("../services/geocode");
+
 
 async function getAllRestaurants(req, res) {
     try{
