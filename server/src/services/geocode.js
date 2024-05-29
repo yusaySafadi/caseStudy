@@ -8,7 +8,7 @@ async function geocodeAddress({street, houseNumber, city, postalCode, country })
         const response = await axios.get(BASE_URL,{
             params:{
                 qq:qqParams,
-                api_key: HERE_API_KEY,
+                apiKey: HERE_API_KEY,
             }
         });
 
