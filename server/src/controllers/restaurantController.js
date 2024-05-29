@@ -1,5 +1,5 @@
 const restaurantModel = require("../models/restaurantModel");
-const locationModel = require("../models/locationModel");
+const locationService = require("../services/locationService");
 const {geocodeAddress} = require("../services/geocode");
 
 async function getAllRestaurants(req, res) {
@@ -15,28 +15,9 @@ async function addRestaurant(req, res) {
     const {name,description,street,houseNumber,city,postalCode, country, additionalInfo,state} = req.body;
 
     try {
-        //Check if the location already exists in the database
-         let location = await locationModel.findLocation({street, houseNumber, city, postalCode, country});
 
-        //if the location does not exist in the database, geode and insert it
-        if (!location) {
-            const coordinates = await geocodeAddress({street, houseNumber, city, postalCode, country});
-            if(!coordinates) {
-                return res.status(400).json({ error: 'Geolocation not found for the specified address.' });
-            }
-            const newLocation ={
-                street,
-                city,
-                state: state || '',
-                country,
-                postalCode,
-                latitude: coordinates.latitude,
-                longitude: coordinates.longitude,
-                additionalInfo,
-                houseNumber
-            };
-            location = await locationModel.insertLocation(newLocation);
-        }
+        //Use service to find or create a location
+        const location = await locationService.findOrCreateLocation({street, houseNumber, city, postalCode, country, state, additionalInfo});
 
         //Insert the restaurant with the location_id
         const newRestaurant ={
