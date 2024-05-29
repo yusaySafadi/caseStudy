@@ -1,12 +1,17 @@
 const restaurantModel = require("../models/restaurantModel");
 const locationService = require("../services/locationService");
+const restaurantCuisineModel = require("../models/restaurantCuisineModel");
 const {response} = require("express");
 
 
 async function getAllRestaurants(req, res) {
     try {
-        const data = await restaurantModel.getAllRestaurantsWithLocations();
-        res.status(200).json(data);
+        const restaurants = await restaurantModel.getAllRestaurantsWithLocations();
+
+        for (const restaurant of restaurants) {
+            restaurant.cuisines = await restaurantCuisineModel.getCuisinesForRestaurant(restaurant.restaurant_id);
+        }
+        res.status(200).json(restaurants);
     } catch (err) {
         console.error('Error getting all restaurants:', err);
         res.status(500).send('Failed to retrieve restaurants ' + err);
@@ -14,10 +19,9 @@ async function getAllRestaurants(req, res) {
 }
 
 async function addRestaurant(req, res) {
-    const {name, description, street, houseNumber, city, postalCode, country, additionalInfo, state} = req.body;
+    const {name, description, street, houseNumber, city, postalCode, country, additionalInfo, state,cuisines} = req.body;
 
     try {
-
         //Use service to find or create a location
         const location = await locationService.findOrCreateLocation({
             street,
@@ -37,6 +41,11 @@ async function addRestaurant(req, res) {
         };
         const insertedRestaurant = await restaurantModel.addRestaurant(newRestaurant);
 
+        if(cuisines && cuisines.length > 0) {
+            for (const cuisineId of cuisines){
+                await restaurantCuisineModel.addCuisineToRestaurant(insertedRestaurant.restaurant_id,cuisineId)
+            }
+        }
 
         res.status(201).json({message: 'Successfully added restaurant', restaurant: insertedRestaurant});
     } catch (err) {
