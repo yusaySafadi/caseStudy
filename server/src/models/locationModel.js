@@ -5,9 +5,9 @@ function findLocation(streetAddress,houseNumber, city,postalCode,country){
         [streetAddress,houseNumber,city,postalCode, country]);
 }
 
-function insertLocation(streetAddress,city,state,country, postalCode,latitude,longitude, additionalInfo, house_number){
-    return db.one('INSERT INTO locations (street_address, city, state, country, postal_code, latitude, longitude, additional_info, house_number) VALUES ($1, $2, $3, $4, $5,$6,$7,$8,$9)',
-        [streetAddress,city,state,country, postalCode,latitude,longitude, additionalInfo, house_number]);
+function insertLocation(location){
+    return db.one('INSERT INTO locations (street_address, city, state, country, postal_code, latitude, longitude, additional_info, house_number) VALUES ($1, $2, $3, $4, $5,$6,$7,$8,$9) RETURNING *',
+        [location.street,location.city,location.state,location.country, location.postalCode,location.latitude,location.longitude, location.additionalInfo, location.houseNumber]);
 }
 
 module.exports = {
