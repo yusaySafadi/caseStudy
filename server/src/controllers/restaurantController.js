@@ -73,8 +73,8 @@ async function updateRestaurant(req, res) {
     const {id} = req.params;
     const {name, description} = req.body;
     try {
-        const updatedRestaurent = await restaurantModel.updateRestaurant(id, name, description);
-        if (updatedRestaurent) {
+        const updatedRestaurant = await restaurantModel.updateRestaurant(id, name, description);
+        if (updatedRestaurant) {
             res.status(200).json({message: 'Successfully updated restaurant'});
         } else {
             res.status(404).send('No restaurant found');
