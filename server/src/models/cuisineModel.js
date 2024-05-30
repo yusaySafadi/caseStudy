@@ -8,7 +8,7 @@ function getCuisineById(id){
     return db.oneOrNone('SELECT * FROM cuisines where cuisine_id = $1', [id]);
 }
 function insertCuisine(cuisine){
-    return db.one('INSERT INTO cuisines (name) VALUES ($1)',[cuisine.name])
+    return db.one('INSERT INTO cuisines (name) VALUES ($1) RETURNING *',[cuisine.name])
 }
 
 function updateCuisines(id,cuisine){

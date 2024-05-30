@@ -64,8 +64,14 @@ async function addCuisine(req, res){
         const cuisine = await  cuisineModel.insertCuisine({name});
         res.status(200).json({message: 'Cuisine successfully added!'},cuisine);
     } catch (err){
-        console.error('Error adding cuisine', err);
-        response.status(500).send('Failed to add cuisine.');
+        if (err.code === '23505') {
+            // Handle duplicate key error
+            res.status(409).json({ error: 'Cuisine already exists' });}
+        else{
+            console.error('Error adding cuisine', err);
+            response.status(500).send('Failed to add cuisine.');
+        }
+
     }
 }
 module.exports = {

@@ -1,7 +1,7 @@
 const db = require('../db');
 
 function insertMenu(menu) {
-    return db.one('INSERT INTO menus (restaurant_id,name) VALUES (${restaurant_id},${name})', menu);
+    return db.one('INSERT INTO menus (restaurant_id,name) VALUES (${restaurant_id},${name}) RETURNING *', menu);
 }
 
 function getMenusByRestaurant(restaurantId) {
