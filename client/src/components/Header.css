@@ -1,0 +1,30 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:0;
+    background-color: #00354D;
+    color: #ffffff;
+    font-family: 'VW Head Bold', sans-serif;
+    height: 64px;
+}
+.header__logo-container{
+    display: flex;
+    gap:16px;
+    padding-left: 24px;
+    padding-right: 24px;
+    align-items: center;
+    justify-content: start;
+
+}
+.header__logo-container span{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.header div .logo{
+
+}
+
+
+
