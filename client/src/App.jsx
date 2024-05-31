@@ -1,11 +1,12 @@
 import { useState } from 'react'
 import './App.css'
+import Sidebar from "./components/Sidebar.jsx";
 
 function App() {
 
   return (
     <div className="app-container">
-
+    <Sidebar/>
     </div>
   )
 }
