@@ -1,0 +1,28 @@
+@font-face {
+    font-family: 'VW Text Regular';
+    src: url('fonts/vwtext-regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'VW Text Bold';
+    src: url('fonts/vwtext-bold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'VW Head Regular';
+    src: url('fonts/vwhead-light.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'VW Head Bold';
+    src: url('fonts/vwhead-bold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+}
+
