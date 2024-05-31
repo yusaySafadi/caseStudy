@@ -77,3 +77,28 @@ fabric.properties
 .idea/caches/build_file_checksums.ser
 /.idea/dataSources.xml
 /server/src/.env
+
+# Logs
+/client/logs
+/client/*.log
+/client/npm-debug.log*
+/client/yarn-debug.log*
+/client/yarn-error.log*
+/client/pnpm-debug.log*
+/client/lerna-debug.log*
+
+/client/node_modules
+/client/dist
+/client/dist-ssr
+/client/*.local
+
+# Editor directories and files
+clien/.vscode/*
+clien/!.vscode/extensions.json
+clien/.idea
+clien/.DS_Store
+clien/*.suo
+clien/*.ntvs*
+clien/*.njsproj
+clien/*.sln
+clien/*.sw?
