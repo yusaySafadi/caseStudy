@@ -1,0 +1,48 @@
+.restaurant-list{
+    margin-top: 20px;
+}
+.restaurant-list__title{
+ font-size: 40px;
+}
+.restaurant-list__table{
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 12px;
+
+    font-size: 16px;
+    overflow: hidden;
+}
+.restaurant-list__table th{
+    height: 44px;
+    padding: 12px 8px;
+    box-sizing: border-box;
+
+}
+.restaurant-list__table td{
+    height: 64px;
+    padding: 18px 12px;
+
+}
+.restaurant-list__table th, .restaurant-list__table td{
+
+    border-bottom: #DFE4E8 1px solid;
+    text-align: left;
+    line-height: 1.5;
+}
+.restaurant-list__head{
+    background-color: #96A3A8;
+}
+.restaurant-list__head__row{
+    max-height: 44px;
+    border-top-left-radius: 12px; /* Round top-left corner */
+    border-top-right-radius: 12px; /* Round top-right corner */
+}
+
+.restaurant-list__table__body tr:last-child td:first-child {
+    border-bottom-left-radius: 12px; /* Round bottom-left corner */
+}
+
+.restaurant-list__table__body tr:last-child td:last-child {
+    border-bottom-right-radius: 12px; /* Round bottom-right corner */
+}
