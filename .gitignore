@@ -102,3 +102,5 @@ clien/*.ntvs*
 clien/*.njsproj
 clien/*.sln
 clien/*.sw?
+
+sqldialects.xml
