@@ -7,6 +7,10 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'VW Head Bold', sans-serif;
 }
 
+.app-container{
+    display: flex;
+    flex-direction: column;
+}
 
 .sidebar {
     width: 240px;
@@ -48,3 +52,8 @@ h1, h2, h3, h4, h5, h6 {
 .sidebar nav ul li span {
      font-size: 1rem;
  }
+
+.main-content{
+    flex: 1;
+    display: flex;
+}
