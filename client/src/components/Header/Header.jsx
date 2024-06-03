@@ -1,5 +1,5 @@
 import './Header.css'
-import VWLogo from '../assets/VWLogo.svg?react';
+import VWLogo from '../../assets/VWLogo.svg?react';
 function Header() {
     return (
         <div className="header">
