@@ -26,7 +26,7 @@ const Menu = ({ restaurantId }) => {
 
     return (
         <div className="menu">
-            {menu.map((menuCategory, menuIndex) => (
+            {menu.length > 0 ? (menu.map((menuCategory, menuIndex) => (
                 <div key={menu.menu_id} className="menu__section">
                     <h3 className="menu__section-title">{menuCategory.name}</h3>
                     {menuCategory.items.map((item, itemIndex) => (
@@ -39,7 +39,7 @@ const Menu = ({ restaurantId }) => {
                         </div>
                     ))}
                 </div>
-            ))}
+            ))) :(<h3>No menus available for this restaurant</h3>)}
         </div>
     );
 };

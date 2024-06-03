@@ -5,10 +5,10 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
     font-family: 'VW Head Bold', sans-serif;
-    color:#000E26;
+    color: #000E26;
 }
 
-.app-container{
+.app-container {
     display: flex;
     flex-direction: column;
 
@@ -27,15 +27,17 @@ h1, h2, h3, h4, h5, h6 {
     grid-column: span 4;
 }
 
-.sidebar nav{
+.sidebar nav {
     display: flex;
     flex-direction: column;
     font-family: 'VW Head Bold', serif;
 }
-.sidebar nav ul{
+
+.sidebar nav ul {
     list-style: none;
     padding: 0;
 }
+
 .sidebar nav ul li {
     display: flex;
     align-items: center;
@@ -43,35 +45,41 @@ h1, h2, h3, h4, h5, h6 {
     cursor: pointer;
     padding-left: 22px;
 }
+
 .sidebar nav ul li.active {
     /*background-color: #003366; /* Optional: background color for active state */
     border-left: 2px solid #001E50;
-/*padding-left: 6px; /* Adjust padding to compensate for border width */
+    /*padding-left: 6px; /* Adjust padding to compensate for border width */
 }
+
 .sidebar nav ul li .icon {
     width: 12px;
     height: 12px;
     margin-right: 12px;
 }
-.sidebar nav ul li span {
-     font-size: 1rem;
- }
 
-.main-content{
+.sidebar nav ul li span {
+    font-size: 1rem;
+}
+
+.main-content {
     display: grid;
     grid-template-columns: repeat(24, 1fr);
     transition: all 0.3s ease-in-out;
-   height: 100%;
+    height: 100%;
 }
+
 .restaurant-list {
     grid-column: span 20;
     overflow: auto;
 }
+
 .restaurant-detail {
     grid-column: span 0;
     overflow: hidden;
     transition: all 0.3s ease-in-out;
 }
+
 .details-visible .restaurant-list {
     grid-column: span 14;
 }
@@ -79,4 +87,14 @@ h1, h2, h3, h4, h5, h6 {
 .details-visible .restaurant-detail {
     grid-column: span 6;
     overflow: auto;
+}
+
+.card-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+    padding: 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
