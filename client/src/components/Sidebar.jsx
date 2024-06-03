@@ -4,7 +4,7 @@ import ListIcon from '../assets/list-Icon.svg?react';
 import PlusIcon from '../assets/plus-Icon.svg?react';
 import NewRestaurantModal from "./NewRestaurantModal.jsx";
 
-function Sidebar() {
+function Sidebar({user}) {
     const [active, setActive] = useState('Dashboard');
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -53,14 +53,18 @@ function Sidebar() {
                         <ListIcon  className="icon"/>
                         <span>Restaurants list</span>
                     </li>
+                    {user && user.role === 'admin' && (
+                        <li className={active === 'NewRestaurant' ? 'active' : ''} onClick={() => {
+                            handleSetActive('NewRestaurant');
+                            handleOpenModal();
+                        }}><PlusIcon className="icon"/>
+                            <span>New Restaurant</span>
+                        </li>)}
 
-                    <li className={active === 'NewRestaurant' ? 'active' : ''} onClick={() => {handleSetActive('NewRestaurant'); handleOpenModal();}}><PlusIcon  className="icon"/>
-                        <span>New Restaurant</span>
-                    </li>
 
                 </ul>
             </nav>
-            <NewRestaurantModal isOpen={isModalOpen} onClose={handleCloseModal} onSubmit={handleAddRestaurant} />
+            <NewRestaurantModal isOpen={isModalOpen} onClose={handleCloseModal} onSubmit={handleAddRestaurant}/>
         </div>
     )
 }
