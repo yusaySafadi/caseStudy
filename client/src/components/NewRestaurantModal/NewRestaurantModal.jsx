@@ -1,5 +1,5 @@
 import './NewRestaurantModal.css';
-import CloseIcon from '../assets/close-Icon32.svg?react';
+import CloseIcon from '../../assets/close-Icon32.svg?react';
 import {useEffect, useState} from "react";
 
 const NewRestaurantModal = ({ isOpen, onClose, onSubmit }) => {

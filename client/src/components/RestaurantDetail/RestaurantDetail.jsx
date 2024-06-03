@@ -1,7 +1,7 @@
 import './RestaurantDetail.css'
-import Map from "./Map.jsx";
-import CloseIcon from '../assets/close-Icon32.svg?react';
-import LocationIcon from '../assets/location-Icon32.svg?react';
+import Map from "../Map/Map.jsx";
+import CloseIcon from '../../assets/close-Icon32.svg?react';
+import LocationIcon from '../../assets/location-Icon32.svg?react';
 function RestaurantDetail({ restaurant, onClose }) {
     if (!restaurant) {
         return <div>Loading...</div>;

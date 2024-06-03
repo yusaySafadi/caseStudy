@@ -1,11 +1,11 @@
 import {BrowserRouter as Router, Navigate, Route, Routes} from 'react-router-dom';
 import {useState} from 'react'
 import './App.css'
-import Sidebar from "./components/Sidebar.jsx";
-import Header from "./components/Header.jsx";
-import RestaurantList from "./components/RestaurantList.jsx";
-import RestaurantDetail from "./components/RestaurantDetail.jsx";
-import Login from "./components/Login.jsx";
+import Sidebar from "./components/Sidebar/Sidebar.jsx";
+import Header from "./components/Header/Header.jsx";
+import RestaurantList from "./components/RestaurantList/RestaurantList.jsx";
+import RestaurantDetail from "./components/RestaurantDetail/RestaurantDetail.jsx";
+import Login from "./components/Login/Login.jsx";
 
 function App() {
     const [user, setUser] = useState(null);

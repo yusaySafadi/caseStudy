@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-import DashboardIcon from '../assets/dashboard-Icon.svg?react';
-import ListIcon from '../assets/list-Icon.svg?react';
-import PlusIcon from '../assets/plus-Icon.svg?react';
-import NewRestaurantModal from "./NewRestaurantModal.jsx";
+import DashboardIcon from '../../assets/dashboard-Icon.svg?react';
+import ListIcon from '../../assets/list-Icon.svg?react';
+import PlusIcon from '../../assets/plus-Icon.svg?react';
+import NewRestaurantModal from "../NewRestaurantModal/NewRestaurantModal.jsx";
 
 function Sidebar({user}) {
     const [active, setActive] = useState('Dashboard');
