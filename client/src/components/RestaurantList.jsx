@@ -6,6 +6,7 @@ function RestaurantList({onSelectRestaurant: onSelectRestaurant}){
    const [error, setError] = useState(null);
 
     useEffect(() => {
+        console.log('i fire once');
         fetch("http://localhost:3000/api/restaurants")
             .then(response => {
                 if(!response.ok){

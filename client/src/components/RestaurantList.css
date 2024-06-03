@@ -1,8 +1,10 @@
 .restaurant-list{
     margin-top: 20px;
+    padding: 10px 50px;
 }
 .restaurant-list__title{
  font-size: 40px;
+    margin-bottom: 30px;
 }
 .restaurant-list__table{
     width: 100%;

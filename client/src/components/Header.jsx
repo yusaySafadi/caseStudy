@@ -7,7 +7,7 @@ function Header() {
                 <VWLogo/>
                 <span>Flavour Fleet</span>
             </div>
-            <h2>Restaurant Admin Dashboard</h2>
+            <h2 className={"header__title"}>Restaurant Admin Dashboard</h2>
             {/*<input type="text" placeholder="Search" />*/}
         </div>
     );
