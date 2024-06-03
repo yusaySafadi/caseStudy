@@ -2,6 +2,7 @@ import './RestaurantDetail.css'
 import Map from "../Map/Map.jsx";
 import CloseIcon from '../../assets/close-Icon32.svg?react';
 import LocationIcon from '../../assets/location-Icon32.svg?react';
+import Menu from "../Menu/Menu.jsx";
 function RestaurantDetail({ restaurant, onClose }) {
     if (!restaurant) {
         return <div>Loading...</div>;
@@ -27,6 +28,7 @@ function RestaurantDetail({ restaurant, onClose }) {
                 </div>
                 <Map apikey={"s-DEJldmvk1b5FY14g5x3uSqLvkmG7DXyN5uj7niJgU"} location={location}/>
                 <p className="restaurant-detail__description">{restaurant.description}</p>
+                <Menu restaurantId={restaurant.restaurant_id} />
             </div>
 
         </div>
