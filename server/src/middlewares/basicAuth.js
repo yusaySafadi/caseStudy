@@ -1,7 +1,9 @@
 const expressBasicAuth = require('express-basic-auth');
 
+const adminUsername = process.env.ADMIN_USERNAME;
+const adminPassword = process.env.ADMIN_PASSWORD;
 const basicAuthMiddleware = expressBasicAuth({
-    users:{[process.env.ADMIN_USERNAME]:process.env.ADMIN_PASSWORD},
+    users:{[adminUsername]: adminPassword},
     challenge: true,
     unauthorizedResponse: (req) => 'Unauthorized'
 });

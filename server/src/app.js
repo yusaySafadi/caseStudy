@@ -2,6 +2,10 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+const basicAuthMiddleware = require('./middlewares/basicAuth');
+const isAdminMiddleware = require("./middlewares/isAdmin");
+
 const corsOptions = {
     origin: 'http://localhost:5173', // Update to your client's origin
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
@@ -21,7 +25,9 @@ app.use('/api', locationRoutes)
 app.use('/api', cuisineRoutes)
 app.use('/api', menuRoutes)
 app.use('/api', menuItemRoutes)
-
+app.get('/api/admin', basicAuthMiddleware, isAdminMiddleware, (req, res) => {
+    res.json({ role: 'admin' });
+});
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
