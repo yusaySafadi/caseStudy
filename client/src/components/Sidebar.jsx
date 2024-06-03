@@ -2,12 +2,43 @@ import React, {useState} from 'react';
 import DashboardIcon from '../assets/dashboard-Icon.svg?react';
 import ListIcon from '../assets/list-Icon.svg?react';
 import PlusIcon from '../assets/plus-Icon.svg?react';
+import NewRestaurantModal from "./NewRestaurantModal.jsx";
 
 function Sidebar() {
     const [active, setActive] = useState('Dashboard');
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
+    const handleOpenModal = () => {
+        setIsModalOpen(true);
+    };
+
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+    };
     const handleSetActive = (page) => {
         setActive(page);
+    };
+    const handleAddRestaurant = async (newRestaurant) => {
+        const username = 'admin';
+        const password = 'secret';
+        const auth = 'Basic ' + btoa(username + ':' + password);
+        // Add the new restaurant to your data source (e.g., send a POST request to your backend)
+        console.log('New Restaurant:', newRestaurant);
+        try {
+            const response = await fetch("http://localhost:3000/api/restaurants", {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': auth
+                },
+                body: JSON.stringify(newRestaurant)
+            });
+            const result = await response.json();
+            console.log("Success:", result);
+        } catch (error) {
+            console.error("Error:", error);
+        }
+        handleCloseModal();
     };
     return (
         <div className="sidebar">
@@ -23,12 +54,13 @@ function Sidebar() {
                         <span>Restaurants list</span>
                     </li>
 
-                    <li className={active === 'NewRestaurant' ? 'active' : ''} onClick={() => handleSetActive('NewRestaurant')}><PlusIcon  className="icon"/>
+                    <li className={active === 'NewRestaurant' ? 'active' : ''} onClick={() => {handleSetActive('NewRestaurant'); handleOpenModal();}}><PlusIcon  className="icon"/>
                         <span>New Restaurant</span>
                     </li>
 
                 </ul>
             </nav>
+            <NewRestaurantModal isOpen={isModalOpen} onClose={handleCloseModal} onSubmit={handleAddRestaurant} />
         </div>
     )
 }

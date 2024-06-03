@@ -1,6 +1,13 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 3000;
+const corsOptions = {
+    origin: 'http://localhost:5173', // Update to your client's origin
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    allowedHeaders: ['Content-Type', 'Authorization'],
+};
+app.use(cors(corsOptions))
 //import routes
 const restaurantRoutes = require('./routes/restaurantRoutes');
 const locationRoutes = require('./routes/locationRoutes');
