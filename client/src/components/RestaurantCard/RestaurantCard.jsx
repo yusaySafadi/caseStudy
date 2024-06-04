@@ -5,7 +5,7 @@ import categoryImages from "../../categoryImages";
 function RestaurantCard({ restaurant, onSelect }) {
     const randomImageId = Math.floor(Math.random() * 1000); // Generate a random image ID
     const cuisineCategory = restaurant.cuisines[0]?.name.toLowerCase();
-    const imageUrl = categoryImages[cuisineCategory] || '../../assets/american.jpg'; // Use a default image if category doesn't match
+    const imageUrl = categoryImages[cuisineCategory] || '/public/default.jpg'; // Use a default image if category doesn't match
 
     return (
         <div className="restaurant-card" onClick={() => onSelect(restaurant)}>
