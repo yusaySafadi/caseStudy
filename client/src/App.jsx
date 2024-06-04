@@ -17,13 +17,17 @@ function App() {
     const [isDetailVisible, setIsDetailVisible] = useState(false);
     const [restaurants, setRestaurants] = useState([]);
     useEffect(() => {
+        // Check localStorage for user data
+        const storedUser = localStorage.getItem('user');
+        if (storedUser) {
+            setUser(JSON.parse(storedUser));
+        }
         // Fetch restaurants data
         fetch('http://localhost:3000/api/restaurants')
             .then(response => response.json())
             .then(data => setRestaurants(data));
     }, []);
     const handleSelectRestaurant = (restaurant) => {
-        console.log(restaurant)
         setSelectedRestaurant(restaurant)
         setIsDetailVisible(true);
     }
