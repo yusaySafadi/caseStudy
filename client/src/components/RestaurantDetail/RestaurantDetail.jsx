@@ -26,7 +26,7 @@ function RestaurantDetail({ restaurant, onClose }) {
                     <LocationIcon className="restaurant-detail__address-icon"/>
                     <p className="restaurant-detail__address-text">{address}</p>
                 </div>
-                <Map apikey={"s-DEJldmvk1b5FY14g5x3uSqLvkmG7DXyN5uj7niJgU"} location={location}/>
+                <Map apikey={import.meta.env.VITE_HERE_API_KEY} location={location}/>
                 <p className="restaurant-detail__description">{restaurant.description}</p>
                 <Menu restaurantId={restaurant.restaurant_id} />
             </div>
