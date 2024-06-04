@@ -3,7 +3,7 @@ import DashboardIcon from '../../assets/dashboard-Icon.svg?react';
 import ListIcon from '../../assets/list-Icon.svg?react';
 import PlusIcon from '../../assets/plus-Icon.svg?react';
 import NewRestaurantModal from "../NewRestaurantModal/NewRestaurantModal.jsx";
-
+import './Sidebar.css'
 function Sidebar({user}) {
     const [active, setActive] = useState('Dashboard');
     const [isModalOpen, setIsModalOpen] = useState(false);
