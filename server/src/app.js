@@ -2,10 +2,38 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 3000;
+const swaggerUi = require('swagger-ui-express');
+const swaggerJsdoc = require('swagger-jsdoc');
 
 const basicAuthMiddleware = require('./middlewares/basicAuth');
 const isAdminMiddleware = require("./middlewares/isAdmin");
 
+const options = {
+    definition: {
+        openapi: '3.0.0',
+        info: {
+            title: 'Restaurant API',
+            version: '1.0.0',
+            description: 'A simple Express Library API',
+        },
+        components: {
+            securitySchemes:{
+                basicAuth:{
+                    type: 'http',
+                    scheme: 'basic',
+                }
+            }
+        },
+        servers: [
+            {
+                url: 'http://localhost:3000',
+            },
+        ],
+    },
+    apis: ['./routes/*.js'], // Files containing annotations for the OpenAPI Specification
+};
+const specs = swaggerJsdoc(options);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 const corsOptions = {
     origin: 'http://localhost:5173', // Update to your client's origin
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
