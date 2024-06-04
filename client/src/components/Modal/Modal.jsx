@@ -3,6 +3,7 @@ import './Modal.css';
 import Menu from '../Menu/Menu.jsx';
 import CloseIcon from '../../assets/close-Icon32.svg?react';
 import LocationIcon from '../../assets/location-Icon32.svg?react';
+import Map from "../Map/Map.jsx";
 
 function Modal({ restaurant, onClose }) {
     if (!restaurant) {
@@ -29,7 +30,9 @@ function Modal({ restaurant, onClose }) {
                 <div className="modal__location">
                     <LocationIcon />
                     <p>{address}</p>
+
                 </div>
+                <Map apikey={"s-DEJldmvk1b5FY14g5x3uSqLvkmG7DXyN5uj7niJgU"} location={location}/>
                 <p>{restaurant.description}</p>
                 <Menu restaurantId={restaurant.restaurant_id} />
             </div>
