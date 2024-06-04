@@ -4,6 +4,8 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const swaggerUi = require('swagger-ui-express');
 const swaggerJsdoc = require('swagger-jsdoc');
+const fs = require('fs');
+const path = require('path');
 
 const basicAuthMiddleware = require('./middlewares/basicAuth');
 const isAdminMiddleware = require("./middlewares/isAdmin");
@@ -55,6 +57,11 @@ app.use('/api', menuRoutes)
 app.use('/api', menuItemRoutes)
 app.get('/api/admin', basicAuthMiddleware, isAdminMiddleware, (req, res) => {
     res.json({ role: 'admin' });
+});
+app.get('/openapi.json', (req, res) => {
+    const filePath = path.join(__dirname, 'openapi.json');
+    fs.writeFileSync(filePath, JSON.stringify(specs, null, 2));
+    res.download(filePath);
 });
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
