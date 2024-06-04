@@ -1,13 +1,13 @@
 import './RestaurantList.css'
 import {useEffect, useState} from "react";
-function RestaurantList({onSelectRestaurant: onSelectRestaurant}){
+function RestaurantList({onSelectRestaurant: onSelectRestaurant, apiUrl}){
    const [restaurants, setRestaurants] = useState([]);
    const [loading, setLoading] = useState(true);
    const [error, setError] = useState(null);
-    const apiUrl = import.meta.env.VITE_API_URL;
+
     useEffect(() => {
-        console.log('i fire once');
-        fetch(`${apiUrl}/api/restaurants```)
+
+        fetch(`${apiUrl}/api/restaurants`)
             .then(response => {
                 if(!response.ok){
                     throw new Error("Response was not ok")

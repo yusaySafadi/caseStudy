@@ -1,4 +1,4 @@
-import {BrowserRouter as Router, Link, Navigate, Route, Routes} from 'react-router-dom';
+import {BrowserRouter as Router, Navigate, Route, Routes} from 'react-router-dom';
 import {useEffect, useState} from 'react'
 import './App.css'
 import Sidebar from "./components/Sidebar/Sidebar.jsx";
@@ -16,14 +16,16 @@ function App() {
     const [selectedRestaurant, setSelectedRestaurant] = useState(null);
     const [isDetailVisible, setIsDetailVisible] = useState(false);
     const [restaurants, setRestaurants] = useState([]);
+    const apiUrl = import.meta.env.VITE_API_URL;
     useEffect(() => {
         // Check localStorage for user data
         const storedUser = localStorage.getItem('user');
+        console.log(import.meta.env.VITE_API_URL);
         if (storedUser) {
             setUser(JSON.parse(storedUser));
         }
         // Fetch restaurants data
-        fetch('http://localhost:3000/api/restaurants')
+        fetch(`${apiUrl}/api/restaurants`)
             .then(response => response.json())
             .then(data => setRestaurants(data));
     }, []);
@@ -43,7 +45,7 @@ function App() {
                 <Route path="/admin" element={<ProtectedRoute user={user && user.role === 'admin'} redirectTo="/login">
                     <div className={`main-content ${isDetailVisible ? 'details-visible' : ''}`}>
                         <Sidebar user={user}/>
-                        <RestaurantList onSelectRestaurant={handleSelectRestaurant}/>
+                        <RestaurantList onSelectRestaurant={handleSelectRestaurant} apiUrl={apiUrl}/>
                         {isDetailVisible && selectedRestaurant && (
                             <RestaurantDetail restaurant={selectedRestaurant} onClose={handleClose}/>)}
                     </div>
@@ -54,7 +56,6 @@ function App() {
                                         onSelect={handleSelectRestaurant}/>))}
                     {isDetailVisible && selectedRestaurant && (
                         <Modal restaurant={selectedRestaurant} onClose={handleClose}/>)}
-
                 </div>)}/>
             </Routes>
         </div>

@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import {useNavigate} from "react-router-dom";
-
-
+import './Login.css'
 const Login = ({ setUser }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -22,7 +21,9 @@ const Login = ({ setUser }) => {
             }
             const data = await response.json();
             const {role} = data;
-            setUser({ username, role, auth });
+            const user ={ username, role, auth }
+            setUser(user);
+            localStorage.setItem('user', JSON.stringify(user));
             localStorage.setItem('auth', auth);
             navigate("/") //redirect after successful login
         } catch (err) {

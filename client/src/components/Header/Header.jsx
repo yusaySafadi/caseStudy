@@ -4,6 +4,7 @@ import {Link, useNavigate} from "react-router-dom";
 function Header({user,setUser}) {
     const handleLogout = () => {
         setUser(null);
+        localStorage.removeItem('user');
         localStorage.removeItem('auth');
     };
     const navigate = useNavigate()
@@ -14,7 +15,7 @@ function Header({user,setUser}) {
                 <span>Flavour Fleet</span>
             </div>
 
-            {user ? (
+            {user && user.role ==="admin" ? (
                 <>
                     <h2 className={"header__title"}>Restaurant Admin Dashboard</h2>
                     <button onClick={handleLogout} className="header__button">Logout</button>
