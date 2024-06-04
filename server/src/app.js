@@ -37,7 +37,7 @@ const options = {
 const specs = swaggerJsdoc(options);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 const corsOptions = {
-    origin: 'http://localhost:5173', // Update to your client's origin
+    origin: 'http://localhost:5173', //  client's origin
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     allowedHeaders: ['Content-Type', 'Authorization'],
 };
