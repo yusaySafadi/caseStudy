@@ -7,7 +7,7 @@ import './Sidebar.css'
 function Sidebar({user}) {
     const [active, setActive] = useState('Dashboard');
     const [isModalOpen, setIsModalOpen] = useState(false);
-
+    const apiUrl = import.meta.env.VITE_API_URL;
     const handleOpenModal = () => {
         setIsModalOpen(true);
     };
@@ -25,7 +25,7 @@ function Sidebar({user}) {
         // Add the new restaurant to your data source (e.g., send a POST request to your backend)
         console.log('New Restaurant:', newRestaurant);
         try {
-            const response = await fetch("http://localhost:3000/api/restaurants", {
+            const response = await fetch(`${apiUrl}/api/restaurants`, {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',

@@ -16,9 +16,10 @@ const NewRestaurantModal = ({ isOpen, onClose, onSubmit }) => {
         cuisines: [],
     });
     const [cuisines, setCuisines] = useState([]);
+    const apiUrl = import.meta.env.VITE_API_URL;
     useEffect(() => {
         if (isOpen) {
-            fetch('http://localhost:3000/api/cuisines')
+            fetch(`${apiUrl}/api/cuisines`)
                 .then(response => response.json())
                 .then(data => setCuisines(data))
                 .catch(error => console.error('Error fetching cuisines:', error));

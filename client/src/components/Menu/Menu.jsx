@@ -4,9 +4,9 @@ import './Menu.css';
 const Menu = ({ restaurantId }) => {
     const [menu, setMenu] = useState([]);
     const [loading, setLoading] = useState(true);
-
+    const apiUrl = import.meta.env.VITE_API_URL;
     useEffect(() => {
-        fetch(`http://localhost:3000/api/menus/${restaurantId}`)
+        fetch(`${apiUrl}/api/menus/${restaurantId}`)
             .then(response => response.json())
             .then(data => {
                 console.log(data);

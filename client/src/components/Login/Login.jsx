@@ -6,12 +6,13 @@ const Login = ({ setUser }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+    const apiUrl = import.meta.env.VITE_API_URL;
     const navigate = useNavigate();
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
             const auth = 'Basic ' + btoa(`${username}:${password}`);
-            const response = await fetch('http://localhost:3000/api/admin', {
+            const response = await fetch(`${apiUrl}/api/admin`, {
                 headers: {
                     'Authorization': auth
                 }

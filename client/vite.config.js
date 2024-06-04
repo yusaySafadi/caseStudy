@@ -10,4 +10,10 @@ export default defineConfig({
         // svgr options
       },
     })],
+  server:{
+    '/api': 'http://localhost:3000', // This redirects all calls starting with /api to the backend
+  },
+  define: {
+    'process.env': process.env,
+  },
 })

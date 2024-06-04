@@ -6,8 +6,15 @@ const PORT = process.env.PORT || 3000;
 const basicAuthMiddleware = require('./middlewares/basicAuth');
 const isAdminMiddleware = require("./middlewares/isAdmin");
 
+const allowedOrigins = process.env.ALLOWED_ORIGINS.split(',');
 const corsOptions = {
-    origin: 'http://localhost:5173', // Update to your client's origin
+    origin: function (origin, callback) {
+        if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     allowedHeaders: ['Content-Type', 'Authorization'],
 };
